@@ -16,15 +16,15 @@ export class AppComponent {
   }
 
   ngOnInit() {
+
+    // OK for now but using this in a business service is better, just like Spring Boot
     this.httpClient.get(this.url).subscribe((users) => {
-        // console.log(users);
+        console.log(users);
     });
 
+    // So this is better, fancy in a business service
     this.bottleService.get().subscribe(users => {
-      console.log("this is from my service");
-      console.log(users);
-      console.table(users);
-
+      console.table(users); // table prints a table based on the data, sometimes handy
     });
   }
 }
