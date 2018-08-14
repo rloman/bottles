@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http'; // met of zonder src/client?
+import { BottleService } from 'src/app/bottle.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,22 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'this Angular6 demo app';
+
+  private url: string = "http://jsonplaceholder.typicode.com/users";
+
+  constructor(private httpClient: HttpClient, private bottleService: BottleService) {
+  }
+
+  ngOnInit() {
+
+    // OK for now but using this in a business service is better, just like Spring Boot
+    this.httpClient.get(this.url).subscribe((users) => {
+        console.log(users);
+    });
+
+    // So this is better, fancy in a business service
+    this.bottleService.get().subscribe(users => {
+      console.table(users); // table prints a table based on the data, sometimes handy
+    });
+  }
 }
