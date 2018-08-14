@@ -6,4 +6,9 @@ import { Injectable } from '@angular/core';
 export class BarService {
 
   constructor() { }
+
+  add(): string {
+		// code here
+  }
+
 }
