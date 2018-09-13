@@ -4,18 +4,36 @@ import { Http, Headers } from '@angular/http';
 import { environment } from '../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { User } from './user';
+import { Observable } from 'rxjs/internal/Observable';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BottleService {
 
-  private url: string = "http://jsonplaceholder.typicode.com/users";
+  private url: string = "http://jsonplaceholder.typicode.com";
 
-  constructor(private httpClient: HttpClient) { }
+  private endpoint: string = "users";
+
+   constructor(private httpClient: HttpClient) {
+
+   }
 
   get() {
-    return this.httpClient.get<User[]>(this.url);
+    return this.httpClient.get<User[]>(`${this.url}/${this.endpoint}`);
+  }
+
+  public create(bottle: Bottle): Observable<Bottle> {
+    return this.httpClient
+      .post<Bottle>(`${this.url}/${this.endpoint}`, bottle);
+  }
+
+  show(id: Number) {
+    return this.httpClient.get<Bottle>(`${this.url}/${this.endpoint}/${id}`);
+  }
+
+  public update(bottle: Bottle): Observable<Bottle> {
+    return this.httpClient.put<Bottle>(`${this.url}/${this.endpoint}/${bottle.id}`, bottle);
   }
 }
 

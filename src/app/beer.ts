@@ -1,4 +1,4 @@
-export class Bottle {
+export class Beer {
 
     id?: Number;
     name: string;
