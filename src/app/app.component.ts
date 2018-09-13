@@ -13,7 +13,7 @@ export class AppComponent {
 
   private url: string = "http://jsonplaceholder.typicode.com/users";
 
-  private bottle: Bottle = {id: 3,name: "To be updated Loman"}; // or some {{ }} from the page ... later or now ???
+  private bottle: Bottle = {id: 3,name: "To be updated Heineken"}; // or some {{ }} from the page ... later or now ???
 
   constructor(private httpClient: HttpClient, private bottleService: BottleService) {
   }
