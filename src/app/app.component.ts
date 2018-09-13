@@ -26,8 +26,9 @@ export class AppComponent {
 
   create() {
     let bottle: Bottle =  {name: "Loman"}; // or some {{ }} from the page ... later or now ???
-    this.bottleService.create(bottle).subscribe(result => {
-        console.table(result);
+    this.bottleService.create(bottle).subscribe(newBottle => {
+        console.table(newBottle);
+        this.bottle = newBottle;
     });
   }
 
