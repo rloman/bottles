@@ -7,8 +7,5 @@ export class BarService {
 
   constructor() { }
 
-  add(): string {
-		// code here
-  }
 
 }
