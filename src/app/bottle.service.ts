@@ -15,7 +15,9 @@ export class BottleService {
 
   private endpoint: string = "users";
 
-  constructor(private httpClient: HttpClient) { }
+   constructor(private httpClient: HttpClient) {
+
+   }
 
   get() {
     return this.httpClient.get<User[]>(`${this.url}/${this.endpoint}`);

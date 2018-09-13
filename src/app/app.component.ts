@@ -10,21 +10,14 @@ import { Bottle } from 'src/app/bottle';
 })
 export class AppComponent {
   title = 'this Angular6 demo app';
-
-  private url: string = "http://jsonplaceholder.typicode.com/users";
-
+  
   private bottle: Bottle = {id: 3,name: "To be updated Heineken"}; // or some {{ }} from the page ... later or now ???
 
-  constructor(private httpClient: HttpClient, private bottleService: BottleService) {
+  constructor(private bottleService: BottleService) {
   }
 
+  // rloman URGENT refactor this to also user Bottle(s) or Users Below
   ngOnInit() {
-
-    // OK for now but using this in a business service is better, just like Spring Boot
-    this.httpClient.get(this.url).subscribe((users) => {
-        console.log(users);
-    });
-
     // So this is better, fancy in a business service
     this.bottleService.get().subscribe(users => {
       console.table(users); // table prints a table based on the data, sometimes handy
