@@ -13,7 +13,7 @@ export class AppComponent {
 
   private url: string = "http://jsonplaceholder.typicode.com/users";
 
-  private bottle: Bottle = {name: "Loman"};
+  private bottle: Bottle = {id: 3,name: "To be updated Loman"}; // or some {{ }} from the page ... later or now ???
 
   constructor(private httpClient: HttpClient, private bottleService: BottleService) {
   }
@@ -32,7 +32,16 @@ export class AppComponent {
   }
 
   create() {
-    this.bottleService.create(this.bottle).subscribe(result => {
+    let bottle: Bottle =  {name: "Loman"}; // or some {{ }} from the page ... later or now ???
+    this.bottleService.create(bottle).subscribe(result => {
+        console.table(result);
+    });
+  }
+
+  update() {
+    // update bottle from component ...
+    this.bottle.name=" Updated R. Loman"; // using component html ... 
+    this.bottleService.update(this.bottle).subscribe(result => {
         console.table(result);
     });
   }

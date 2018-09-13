@@ -25,6 +25,10 @@ export class BottleService {
     return this.httpClient
       .post<Bottle>(`${this.url}/${this.endpoint}`, bottle);
   }
+
+  public update(bottle: Bottle): Observable<Bottle> {
+    return this.httpClient.put<Bottle>(`${this.url}/${this.endpoint}/${bottle.id}`, bottle);
+  }
 }
 
 
