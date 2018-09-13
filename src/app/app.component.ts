@@ -38,6 +38,13 @@ export class AppComponent {
     });
   }
 
+  show() {
+    let id:Number = 3;
+    this.bottleService.show(id).subscribe(result => {
+        console.table(result);
+    });
+  }
+
   update() {
     // update bottle from component ...
     this.bottle.name=" Updated R. Loman"; // using component html ... 

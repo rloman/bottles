@@ -1,5 +1,5 @@
 export class Bottle {
 
-    id: Number;
+    id?: Number;
     name: string;
 }
